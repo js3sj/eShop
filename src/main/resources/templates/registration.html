@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+<title data-th-text="#{label.mainTitle}"></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+	
+</script>
+</head>
+<body>
+	<th:block th:include='/_header_index'></th:block>
+	<div align="center">
+		<br>
+		<div class="content">
+			<!--  class="container mt-3"-->
+			<h3 class="h3" data-th-text="#{label.user.registration}"></h3>
+			<br> <br>
+			<form class="form-control" action="#" th:action="@{/user/create}"
+				th:object="${user}" method="post" enctype="multipart/form-data">
+				<div class="innercontent">
+					<label class="form-check-label w-45" for="username"
+						data-th-text="#{label.user.username}"></label> <input
+						class="form-check-input w-auto" type="text" th:field="*{username}"
+						id="username" th:placeholder="#{label.form.username}">
+				</div>
+				<span th:if="${#fields.hasErrors('username')}"
+					th:errors="*{username}" style="color: red">Username Error</span>
+				<div class="innercontent">
+					<label class="form-check-label w-45" for="password"
+						data-th-text="#{label.user.password}"></label> <input
+						class="form-check-input w-auto" type="password"
+						th:field="*{password}" id="password"
+						th:placeholder="#{label.form.password}">
+				</div>
+				<span th:if="${#fields.hasErrors('password')}"
+					th:errors="*{password}" style="color: red">Password Error</span>
+				<div class="innercontent">
+					<label class="form-check-label w-45" for="price"
+						data-th-text="#{label.user.name}"></label> <input
+						class="form-check-input w-auto" type="text" th:field="*{name}"
+						id="name" th:placeholder="#{label.form.name}">
+				</div>
+				<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+					style="color: red">Name Error</span>
+				<div class="innercontent">
+					<label class="form-check-label w-45" for="surname"
+						data-th-text="#{label.user.surname}"></label> <input
+						class="form-check-input w-auto" type="text" th:field="*{surname}"
+						id="surname" th:placeholder="#{label.form.surname}">
+				</div>
+				<span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
+					style="color: red">Surname Error</span>
+				<div class="innercontent">
+					<label class="form-check-label w-45" for="address"
+						data-th-text="#{label.user.address}"></label> <input
+						class="form-check-input w-auto" type="text" th:field="*{address}"
+						id="address" th:placeholder="#{label.form.address}">
+				</div>
+				<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+					style="color: red">Address Error</span>
+
+				<button type="submit" class="btn btn-primary"
+					data-th-text="#{label.user.buttonAddNew}"></button>
+				<br>
+			</form>
+		</div>
+		<br> <a class="btn btn-primary" href="/index"
+			data-th-text="#{label.buttonBack}"></a>
+	</div>
+</body>
+</html>

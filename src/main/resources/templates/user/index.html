@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+<title data-th-text="#{label.mainTitle}"></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+	
+</script>
+</head>
+<body>
+	<th:block th:include='/_header'></th:block>
+	<div class="container-fluid p-5 bg-primary text-white text-center">
+		<h1 class="h1" data-th-text="#{label.title}"></h1>
+		<h3 class="h3" data-th-text="#{label.title6}"></h3>
+	</div>
+	<div class="container-fluid" th:switch="${users}">
+		<h2 th:case="null" data-th-text="#{label.titleNoUsers}"></h2>
+		<div th:case="*">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th data-th-text="#{label.users.username}"></th>
+						<th data-th-text="#{label.users.name}"></th>
+						<th data-th-text="#{label.users.surname}"></th>
+						<th data-th-text="#{label.users.address}"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.username}"></td>
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.surname}"></td>
+						<td th:text="${user.address}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				<a class="btn btn-primary" href="/items/index"
+					data-th-text="#{label.buttonBack}"></a>
+			</p>
+		</div>
+</body>
+</html>
